@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Étoiles en arrière-plan */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Écrans */
+.screen {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Écran d'intro */
+#intro-screen {
+    flex-direction: column;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.undertale-logo h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 
+        4px 4px 0 #ffff00,
+        8px 8px 0 #ff0000;
+    animation: glitch 2s infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-2px, 2px); }
+    94% { transform: translate(2px, -2px); }
+    96% { transform: translate(-2px, -2px); }
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 3rem;
+}
+
+.menu-box {
+    margin-top: 2rem;
+}
+
+.menu-btn {
+    background: #000;
+    border: 4px solid #fff;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.menu-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+.heart {
+    color: #ff0000;
+    margin-right: 0.5rem;
+}
+
+.heart-hidden {
+    opacity: 0;
+    margin-right: 0.5rem;
+}
+
+/* Écran principal */
+#main-screen {
+    padding: 2rem;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Boîte de dialogue */
+.dialogue-box {
+    background: #000;
+    border: 4px solid #fff;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.character-name {
+    color: #ffff00;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.dialogue-text {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    min-height: 60px;
+}
+
+.continue-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Menu de navigation */
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-btn {
+    background: #000;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #fff;
+    color: #000;
+}
+
+.nav-btn:hover .heart-hidden,
+.nav-btn.active .heart-hidden {
+    opacity: 1;
+    color: #ff0000;
+}
+
+/* Sections de contenu */
+#content-area {
+    min-height: 400px;
+}
+
+.content-section {
+    display: none;
+    animation: slideIn 0.5s ease-out;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pixel-box {
+    background: #000;
+    border: 4px solid #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pixel-box h2 {
+    color: #ffff00;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 1rem;
+}
+
+.pixel-box h3 {
+    color: #00ff00;
+    margin: 1rem 0 0.5rem;
+    font-size: 0.9rem;
+}
+
+.pixel-box p {
+    font-size: 0.7rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.pixel-box ul {
+    list-style: none;
+}
+
+.pixel-box li {
+    font-size: 0.7rem;
+    line-height: 2;
+    padding-left: 1rem;
+}
+
+.pixel-box a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.pixel-box a:hover {
+    color: #ff00ff;
+}
+
+/* HP Bar - Style Undertale */
+.hp-container {
+    margin-bottom: 1.5rem;
+}
+
+.hp-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.hp-text {
+    color: #fff;
+    font-weight: bold;
+}
+
+.hp-values {
+    color: #fff;
+}
+
+.hp-current {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+.hp-max {
+    color: #ffff00;
+}
+
+.hp-bar-outer {
+    width: 100%;
+    height: 24px;
+    background: #8b0000;
+    border: 3px solid #fff;
+    position: relative;
+    box-shadow: 
+        inset 0 0 0 2px #000,
+        0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hp-bar-inner {
+    height: 100%;
+    background: linear-gradient(180deg, #ffff00 0%, #ffcc00 50%, #ff9900 100%);
+    transition: width 0.5s ease-out;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.hp-bar-shine {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        transparent 100%);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Projets */
+.project-item {
+    background: #1a1a1a;
+    border: 2px solid #fff;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-link {
+    display: inline-block;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.6rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+}
+
+.btn-link:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Compétences */
+.skill-category {
+    margin-bottom: 2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skill-tag {
+    background: #1a1a1a;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 0.5rem 1rem;
+    font-size: 0.6rem;
+    transition: all 0.3s;
+}
+
+.skill-tag:hover {
+    background: #00ff00;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Contact */
+.contact-intro {
+    margin-bottom: 2rem;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-btn {
+    background: #000;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 0.7rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    min-width: 150px;
+}
+
+.contact-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+.contact-btn .icon {
+    font-size: 2rem;
+}
+
+/* Stats */
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.stats-container img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+}
+
+/* Citation */
+.quote-box {
+    background: #1a1a1a;
+    border: 3px solid #fff;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.quote-box p {
+    font-size: 0.7rem;
+    line-height: 1.8;
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .undertale-logo h1 {
+        font-size: 2rem;
+        text-shadow: 
+            2px 2px 0 #ffff00,
+            4px 4px 0 #ff0000;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+    }
+    
+    .nav-btn {
+        width: 100%;
+    }
+    
+    .pixel-box {
+        padding: 1rem;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+    }
+    
+    .contact-btn {
+        width: 100%;
+    }
+}

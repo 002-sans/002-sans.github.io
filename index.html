@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤ Sans - Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <!-- Écran d'introduction -->
+    <div id="intro-screen" class="screen active">
+        <div class="intro-content">
+            <div class="undertale-logo">
+                <h1>* SANS</h1>
+                <p class="subtitle">Portfolio v1.0</p>
+            </div>
+            <div class="menu-box">
+                <button class="menu-btn" onclick="startGame()">
+                    <span class="heart">❤</span> COMMENCER
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran principal -->
+    <div id="main-screen" class="screen">
+        <div class="game-container">
+            <!-- Boîte de dialogue -->
+            <div class="dialogue-box">
+                <div class="dialogue-content">
+                    <div class="character-name">* Sans</div>
+                    <p id="dialogue-text" class="dialogue-text"></p>
+                    <span class="continue-indicator">▼</span>
+                </div>
+            </div>
+
+            <!-- Menu de navigation -->
+            <div class="nav-menu">
+                <button class="nav-btn" onclick="showSection('about')" data-section="about">
+                    <span class="heart">❤</span> À PROPOS
+                </button>
+                <button class="nav-btn" onclick="showSection('projects')">
+                    <span class="heart-hidden">❤</span> PROJETS
+                </button>
+                <button class="nav-btn" onclick="showSection('skills')">
+                    <span class="heart-hidden">❤</span> COMPÉTENCES
+                </button>
+                <button class="nav-btn" onclick="showSection('contact')">
+                    <span class="heart-hidden">❤</span> CONTACT
+                </button>
+                <button class="nav-btn" onclick="showSection('stats')">
+                    <span class="heart-hidden">❤</span> STATS
+                </button>
+            </div>
+
+            <!-- Sections de contenu -->
+            <div id="content-area">
+                <!-- Section À propos -->
+                <div id="about-section" class="content-section active">
+                    <div class="pixel-box">
+                        <h2>* À PROPOS DE MOI</h2>
+                        <div class="hp-container">
+                            <div class="hp-label">
+                                <span class="hp-text">Sans</span>
+                                <span class="hp-values">HP <span class="hp-current">0</span> / <span class="hp-max">92</span></span>
+                            </div>
+                            <div class="hp-bar-outer">
+                                <div class="hp-bar-inner" id="hp-bar" style="width: 0%;">
+                                    <div class="hp-bar-shine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="info-list">
+                            <li>💻 Développeur de <a href="https://github.com/stealy-Project/" target="_blank">Stealy</a></li>
+                            <li>👁️ Travaille sur <a href="https://github.com/002-sans/Spying-Web" target="_blank">Spying</a></li>
+                            <li>🧩 Créateur de <a href="https://github.com/002-sans/VencordPlugins" target="_blank">Plugins Vencord</a></li>
+                            <li>🏢 Orga: <a href="https://github.com/Stealy-Project" target="_blank">Stealy-Project</a> & <a href="https://github.com/random-tools" target="_blank">random-tools</a></li>
+                            <li>🌱 J'apprends le HTML & CSS</li>
+                            <li>⚡ Dev depuis 2019</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section Projets -->
+                <div id="projects-section" class="content-section">
+                    <div class="pixel-box">
+                        <h2>* MES PROJETS</h2>
+                        <div class="project-item">
+                            <h3>🔷 Stealy</h3>
+                            <p>* Un projet mystérieux qui mérite ton attention...</p>
+                            <a href="https://github.com/stealy-Project/" target="_blank" class="btn-link">EXPLORER</a>
+                        </div>
+                        <div class="project-item">
+                            <h3>👁️ Spying</h3>
+                            <p>* Quelque chose d'intéressant se prépare ici...</p>
+                            <a href="https://github.com/002-sans/Spying-Web" target="_blank" class="btn-link">EXPLORER</a>
+                        </div>
+                        <div class="project-item">
+                            <h3>🧩 Vencord Plugins</h3>
+                            <p>* Des plugins pour améliorer ton expérience Discord.</p>
+                            <a href="https://github.com/002-sans/VencordPlugins" target="_blank" class="btn-link">EXPLORER</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Compétences -->
+                <div id="skills-section" class="content-section">
+                    <div class="pixel-box">
+                        <h2>* COMPÉTENCES</h2>
+                        <div class="skill-category">
+                            <h3>⚔️ Langages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">C</span>
+                                <span class="skill-tag">Bash</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>🛡️ Frameworks & Outils</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Express</span>
+                                <span class="skill-tag">Puppeteer</span>
+                                <span class="skill-tag">Selenium</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>💾 Bases de données</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Redis</span>
+                                <span class="skill-tag">SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Contact -->
+                <div id="contact-section" class="content-section">
+                    <div class="pixel-box">
+                        <h2>* CONTACT</h2>
+                        <p class="contact-intro">* Tu veux me parler ? Choisis ton chemin...</p>
+                        <div class="contact-buttons">
+                            <a href="https://discord.gg/prevnames-1294586125234737232" target="_blank" class="contact-btn">
+                                <span class="icon">💬</span>
+                                <span>Discord</span>
+                            </a>
+                            <a href="https://instagram.com/002.sans" target="_blank" class="contact-btn">
+                                <span class="icon">📸</span>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://github.com/002-sans" target="_blank" class="contact-btn">
+                                <span class="icon">💻</span>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Stats -->
+                <div id="stats-section" class="content-section">
+                    <div class="pixel-box">
+                        <h2>* STATISTIQUES GITHUB</h2>
+                        <div class="stats-container">
+                            <img src="https://github-readme-stats-eight-theta.vercel.app/api?username=002-sans&show_icons=true&theme=algolia&include_all_commits=true&count_private=true&hide_border=true&bg_color=000000" alt="GitHub Stats"/>
+                            <img src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=002-sans&layout=compact&langs_count=8&theme=algolia&hide_border=true&bg_color=000000" alt="Top Languages"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Citation -->
+            <div class="quote-box">
+                <p>"Le code, c'est comme l'humour : quand il faut l'expliquer, c'est qu'il n'est pas bon." 😄</p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="menu-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
