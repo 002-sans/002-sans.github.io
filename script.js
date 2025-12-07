@@ -129,25 +129,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Easter egg : Konami Code
 let konamiCode = [];
-const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
 
 document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
+    // Utiliser e.code au lieu de e.key pour les lettres
+    const key = e.code;
+    konamiCode.push(key);
     konamiCode = konamiCode.slice(-10);
     
+    console.log('Touche pressée:', key);
+    console.log('Séquence actuelle:', konamiCode.join(','));
+    console.log('Séquence attendue:', konamiSequence.join(','));
+    
     if (konamiCode.join(',') === konamiSequence.join(',')) {
+        console.log('🎉 KONAMI CODE ACTIVÉ !');
         activateEasterEgg();
     }
 });
 
 function activateEasterEgg() {
     const dialogueElement = document.getElementById('dialogue-text');
-    dialogueElement.textContent = "* Heh heh heh... Tu as trouvé le code secret. Tu vas avoir un mauvais temps... 💀";
+    if (dialogueElement) {
+        isTyping = false;
+        dialogueElement.textContent = "* Si tu continues comme ca, TU VAS PASSER UN SALE QUART D'HEURE... 💀";
+    }
     document.body.style.animation = 'shake 0.5s infinite';
     
     setTimeout(() => {
         document.body.style.animation = '';
-        typeDialogue(dialogues.about);
+        if (dialogues.about) {
+            typeDialogue(dialogues.about);
+        }
     }, 3000);
 }
 
